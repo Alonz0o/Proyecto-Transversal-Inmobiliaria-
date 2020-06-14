@@ -125,7 +125,7 @@ namespace Inmobiliaria_.Net_Core.Api
 				var entidad = contexto.inmuebles.Include(e => e.Duenio).FirstOrDefault(e => e.InmuebleId == id && e.Duenio.Email == User.Identity.Name);
 				if (entidad != null)
 				{
-					entidad.Superficie = -1;//cambiar por estado = 0
+					entidad.EstaHabilitado = false;
 					contexto.inmuebles.Update(entidad);
 					contexto.SaveChanges();
 					return Ok();
